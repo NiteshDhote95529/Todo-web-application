@@ -1,0 +1,51 @@
+﻿@model Todo_web_application.Models.Entities.TaskMaster
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Add Task</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-2">
+                <label asp-for="Task" class="control-label mb-1"></label>
+                <input asp-for="Task" class="form-control" />
+                <span asp-validation-for="Task" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Description" class="control-label mb-1"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeTacken" class="control-label mb-2"></label>
+                <input asp-for="TimeTacken" class="form-control mb-1" />
+                <span asp-validation-for="TimeTacken" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-2">
+                <label asp-for="Status" class="control-label mb-1"></label>
+                <select asp-for="Status" class="form-control">
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <input type="submit" value="Add To List" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-2">
+    <a asp-action="Index ">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
